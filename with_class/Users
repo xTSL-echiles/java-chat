@@ -1,0 +1,28 @@
+package server;
+
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.Socket;
+import java.util.UUID;
+
+public class Users implements Serializable {
+    private Socket socket;
+    private String userName;
+    private UUID uuid;
+    private ObjectOutputStream out;
+
+    public Users(Socket socket) {
+        this.socket = socket;
+        this.userName = "Гость";
+        this.uuid = UUID.randomUUID(); // рандомный юид, ни у кого не повторяется
+    }
+
+    public void setUserName(String userName) { this.userName = userName; }
+    public Socket getSocket() { return socket;}
+    public String getUserName() { return userName;}
+    public UUID getUuid() { return uuid; }
+    public void setOut(ObjectOutputStream oos) { this.out = oos;}
+    public ObjectOutputStream getOut() { return out; }
+
+
+}
